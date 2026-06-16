@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Pong"
-run/main_scene="uid://l3kx0em3hfhd"
+run/main_scene="uid://cm1xnc4v8cg3y"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
