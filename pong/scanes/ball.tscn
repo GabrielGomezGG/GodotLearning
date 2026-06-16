@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c327dajx0ls7a"]
+
+[ext_resource type="Script" uid="uid://cpr22s5hmnurr" path="res://scanes/ball.gd" id="1_jr2qg"]
+[ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="1_yvd6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr2qg"]
+size = Vector2(29, 307.01752)
+
+[node name="ball" type="CharacterBody2D" unique_id=850890748]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_jr2qg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1301808475]
+position = Vector2(1.5, -1.5)
+scale = Vector2(0.22656251, 0.2734375)
+texture = ExtResource("1_yvd6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=867056182]
+position = Vector2(1.5, -1.500001)
+scale = Vector2(1, 0.114)
+shape = SubResource("RectangleShape2D_jr2qg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1768800089]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1989955754]
+position = Vector2(1.5, -1.500001)
+scale = Vector2(1, 0.114)
+shape = SubResource("RectangleShape2D_jr2qg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

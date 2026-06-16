@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://l3kx0em3hfhd"]
+
+[ext_resource type="PackedScene" uid="uid://dx8vjylsygmcq" path="res://scanes/player.tscn" id="1_h2is2"]
+[ext_resource type="PackedScene" uid="uid://cml1vydenndjy" path="res://scanes/wall.tscn" id="1_rnvon"]
+[ext_resource type="Script" uid="uid://jvbpgcgyv4y4" path="res://scanes/screen.gd" id="1_wbuqr"]
+[ext_resource type="PackedScene" uid="uid://dy0kxf3yivygr" path="res://scanes/score.tscn" id="2_1txg0"]
+[ext_resource type="PackedScene" uid="uid://c327dajx0ls7a" path="res://scanes/ball.tscn" id="2_rnvon"]
+
+[node name="Screen" type="Node2D" unique_id=343038121 node_paths=PackedStringArray("label1", "label2")]
+script = ExtResource("1_wbuqr")
+label1 = NodePath("Score1/Label")
+label2 = NodePath("Score2/Label")
+
+[node name="WallPlayer1" parent="." unique_id=2045726070 instance=ExtResource("1_rnvon")]
+modulate = Color(0, 1, 0.5411765, 1)
+position = Vector2(-500, 0)
+rotation = 1.5707964
+collision_layer = 8
+
+[node name="WallPlayer2" parent="." unique_id=669570771 instance=ExtResource("1_rnvon")]
+modulate = Color(0, 1, 0.5411765, 1)
+position = Vector2(500, 0)
+rotation = 1.5707964
+collision_layer = 8
+
+[node name="WallTop" parent="." unique_id=1797882873 instance=ExtResource("1_rnvon")]
+position = Vector2(0, -313)
+
+[node name="WallBottom" parent="." unique_id=1314861384 instance=ExtResource("1_rnvon")]
+position = Vector2(4, 314)
+
+[node name="Score2" parent="." unique_id=1272735673 instance=ExtResource("2_1txg0")]
+offset_left = 525.0
+offset_right = 525.0
+
+[node name="Score1" parent="." unique_id=605445826 instance=ExtResource("2_1txg0")]
+offset_left = -562.0
+offset_right = -562.0
+
+[node name="Player1" parent="." unique_id=1722035329 instance=ExtResource("1_h2is2")]
+position = Vector2(-450, 2)
+rotation = 1.5707964
+
+[node name="Player2" parent="." unique_id=1444769930 instance=ExtResource("1_h2is2")]
+position = Vector2(450, -1)
+rotation = -1.5707964
+isPlayerOne = false
+
+[node name="ball" parent="." unique_id=1703404201 node_paths=PackedStringArray("camera") instance=ExtResource("2_rnvon")]
+camera = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1478219349]
+
+[connection signal="star_game" from="." to="ball" method="_on_screen_star_game"]
+[connection signal="change_turn" from="ball" to="." method="_on_ball_change_turn"]
+[connection signal="set_point" from="ball" to="." method="_on_ball_set_point"]
