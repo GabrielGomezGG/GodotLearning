@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cml1vydenndjy"]
 
+[ext_resource type="Script" uid="uid://b082j8xeueqlo" path="res://scanes/wall.gd" id="1_8qjy4"]
 [ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="1_oom2p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upqd3"]
@@ -8,10 +9,18 @@ size = Vector2(1700, 20)
 [node name="Wall" type="StaticBody2D" unique_id=1878221477]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_8qjy4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1121821590]
 scale = Vector2(13.281251, 0.171875)
 texture = ExtResource("1_oom2p")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=25817369]
+offset_left = -850.0
+offset_top = -10.0
+offset_right = 850.0
+offset_bottom = 10.0
+color = Color(0, 0, 0.1254902, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878943574]
 shape = SubResource("RectangleShape2D_upqd3")

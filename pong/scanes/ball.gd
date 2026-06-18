@@ -14,6 +14,8 @@ static var velosity_ball : float = 200.0
 
 static var MAX_HEIGHT_SIZE : float = 0
 
+@onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -23,7 +25,7 @@ func _ready() -> void:
 	
 	print(MAX_HEIGHT_SIZE)
 	
-	pass # Replace with function body.
+	velocity = Vector2(1, 0.5).normalized() * velosity_ball
 
 func randomOrientation() -> int:
 	var orientation = randi() % 2
@@ -45,6 +47,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	match body.collision_layer:
 		1: # Player Colision
 			orientation_x *= -1
+			cpu_particles_2d.gravity *= -(1)
+			cpu_particles_2d.amount += 4
 			change_turn.emit()
 		2: # Wall Colision
 			orientation_y *= -1
@@ -52,6 +56,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			position = Vector2(0.0,_get_ramdom_height())
 			velosity_ball = MIN_VELOSITY_BALL
 			set_point.emit()
+			cpu_particles_2d.amount = 4
 
 func _get_ramdom_height() -> float:
 	var halfHeight = (MAX_HEIGHT_SIZE) / 3

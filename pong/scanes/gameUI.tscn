@@ -53,7 +53,7 @@ layout_mode = 2
 
 [node name="player" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer" unique_id=1671835578]
 layout_mode = 2
-text = "Player 1"
+text = "Player 2"
 
 [node name="point" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer" unique_id=772757765]
 layout_mode = 2

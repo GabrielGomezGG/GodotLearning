@@ -1,23 +1,49 @@
 [gd_scene format=3 uid="uid://c327dajx0ls7a"]
 
 [ext_resource type="Script" uid="uid://cpr22s5hmnurr" path="res://scanes/ball.gd" id="1_jr2qg"]
-[ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="1_yvd6x"]
+
+[sub_resource type="Curve" id="Curve_yvd6x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr2qg"]
-size = Vector2(29, 307.01752)
+size = Vector2(20, 175.4386)
 
 [node name="ball" type="CharacterBody2D" unique_id=850890748]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_jr2qg")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1301808475]
-position = Vector2(1.5, -1.5)
-scale = Vector2(0.22656251, 0.2734375)
-texture = ExtResource("1_yvd6x")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1752567302]
+amount = 4
+lifetime = 0.43
+emission_shape = 3
+emission_rect_extents = Vector2(9, 9)
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(-980, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_yvd6x")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1558827212]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.9647059, 0.9647059, 0.39215687, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=867056182]
-position = Vector2(1.5, -1.500001)
 scale = Vector2(1, 0.114)
 shape = SubResource("RectangleShape2D_jr2qg")
 
@@ -26,7 +52,6 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1989955754]
-position = Vector2(1.5, -1.500001)
 scale = Vector2(1, 0.114)
 shape = SubResource("RectangleShape2D_jr2qg")
 
