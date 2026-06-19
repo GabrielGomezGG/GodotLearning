@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://h3m4ttd4xni7"]
+
+[ext_resource type="PackedScene" uid="uid://hd2ej2svrexn" path="res://scanes/flappy.tscn" id="1_wvl5c"]
+
+[node name="GameScreen" type="Node2D" unique_id=1288761079]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=492622330]
+
+[node name="Flappy" parent="." unique_id=884521568 instance=ExtResource("1_wvl5c")]

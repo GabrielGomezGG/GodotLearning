@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://hd2ej2svrexn"]
+
+[ext_resource type="Script" uid="uid://bqye8p3ioaqkq" path="res://scripts/flappy.gd" id="1_hnbai"]
+[ext_resource type="Texture2D" uid="uid://b4e0u6rtwust7" path="res://birds/Bird1-1.png" id="1_j04pb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnbai"]
+size = Vector2(14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tftb"]
+atlas = ExtResource("1_j04pb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trrmy"]
+atlas = ExtResource("1_j04pb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnsio"]
+atlas = ExtResource("1_j04pb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26sjp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tftb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnsio")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 6.0
+}]
+
+[node name="Flappy" type="CharacterBody2D" unique_id=1171342555]
+script = ExtResource("1_hnbai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=228858831]
+position = Vector2(0, -0.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_hnbai")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1401423703]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_26sjp")
+animation = &"jump"
+frame_progress = 0.18219544
+
+[node name="Timer" type="Timer" parent="." unique_id=866043106]
+process_callback = 0
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
