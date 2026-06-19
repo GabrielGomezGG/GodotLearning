@@ -19,7 +19,7 @@ func _ready() -> void:
 	#label2.text = str(player2Point)
 
 
-func _on_ball_set_point() -> void:
+func _on_ball_set_point(orientation: int) -> void:
 	if(isPlayerOneTurn) :
 		player1Point += 1
 		#label1.text = str(player1Point)

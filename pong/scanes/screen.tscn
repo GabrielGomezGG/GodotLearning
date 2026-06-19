@@ -47,5 +47,6 @@ camera = NodePath("../Camera2D")
 
 [connection signal="star_game" from="." to="ball" method="_on_screen_star_game"]
 [connection signal="change_turn" from="ball" to="." method="_on_ball_change_turn"]
+[connection signal="colission" from="ball" to="GameUI" method="_on_ball_colission"]
 [connection signal="set_point" from="ball" to="." method="_on_ball_set_point"]
 [connection signal="set_point" from="ball" to="GameUI" method="_on_ball_set_point"]

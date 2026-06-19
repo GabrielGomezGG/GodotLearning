@@ -1,12 +1,14 @@
 class_name Ball
 extends CharacterBody2D
 
-signal set_point
+signal set_point(orientation: int)
 signal change_turn
+signal colission
 
 const MIN_VELOSITY_BALL : float = 200.0
 
 static var velosity_ball : float = 200.0
+static var counter : int = 1
 @export var orientation_x : int = 1
 @export var orientation_y : int = 1
 
@@ -44,6 +46,10 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	velosity_ball += 50
+	counter += 1
+	
+	colission.emit()
+	
 	match body.collision_layer:
 		1: # Player Colision
 			orientation_x *= -1
@@ -53,9 +59,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		2: # Wall Colision
 			orientation_y *= -1
 		8: # Point Colision
+			counter = 1
 			position = Vector2(0.0,_get_ramdom_height())
 			velosity_ball = MIN_VELOSITY_BALL
-			set_point.emit()
+			set_point.emit(orientation_x)
 			cpu_particles_2d.amount = 4
 
 func _get_ramdom_height() -> float:
