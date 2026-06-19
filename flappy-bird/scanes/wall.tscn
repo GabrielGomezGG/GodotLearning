@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://omdh3n3teew3"]
+
+[ext_resource type="Texture2D" uid="uid://bh1islyxvqogg" path="res://tiles/PipeStyle4.png" id="1_oom2p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qjy4"]
+size = Vector2(32, 48)
+
+[node name="Wall" type="Area2D" unique_id=1860843624]
+scale = Vector2(1, 2)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1395725381]
+texture = ExtResource("1_oom2p")
+region_enabled = true
+region_rect = Rect2(0, -0.02161944, 32.003376, 47.94962)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85944446]
+shape = SubResource("RectangleShape2D_8qjy4")

@@ -30,6 +30,13 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="flappy"
+2d_physics/layer_2="wall"
+2d_physics/layer_3="point"
+2d_physics/layer_4="die"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

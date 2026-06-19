@@ -1,9 +1,26 @@
 [gd_scene format=3 uid="uid://h3m4ttd4xni7"]
 
+[ext_resource type="Script" uid="uid://da6nkfouxqhga" path="res://scripts/game_screen.gd" id="1_7v28y"]
 [ext_resource type="PackedScene" uid="uid://hd2ej2svrexn" path="res://scanes/flappy.tscn" id="1_wvl5c"]
 
 [node name="GameScreen" type="Node2D" unique_id=1288761079]
+script = ExtResource("1_7v28y")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=492622330]
 
+[node name="SpawnPipe" type="Timer" parent="." unique_id=915602707]
+wait_time = 2.0
+autostart = true
+
 [node name="Flappy" parent="." unique_id=884521568 instance=ExtResource("1_wvl5c")]
+z_index = 10
+position = Vector2(0, -287)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2003066686]
+position = Vector2(-698, -283)
+exclude_parent = false
+target_position = Vector2(4, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[connection signal="timeout" from="SpawnPipe" to="." method="_on_timer_timeout"]
