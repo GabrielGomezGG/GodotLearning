@@ -6,10 +6,14 @@ signal update_score(text: String)
 var pipe_scene = preload("res://scanes/wall_group.tscn") 
 var pipes : Array
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@export var parallax2D : Parallax2D
 
 var score: int = 0
 static var gameOver = false
 var tweenPipes : Array[Tween]
+
+func _ready() -> void:
+	parallax2D.autoscroll.x = -200
 
 func _physics_process(delta: float) -> void:
 	
@@ -55,6 +59,7 @@ func _on_wall_group_set_point() -> void:
 func _on_flappy_game_over() -> void:
 	print("GAME OVER")
 	gameOver = true
+	parallax2D.autoscroll.x = 0
 	
 	for pipe in tweenPipes:
 		if pipe: pipe.kill()
@@ -63,4 +68,9 @@ func _on_flappy_game_over() -> void:
 func _on_game_ui_reset_game() -> void:
 	gameOver = false
 	score = 0
+	
 	get_tree().change_scene_to_file("res://scanes/game_screen.tscn")
+
+
+func _on_flappy_set_point() -> void:
+	setPoint()

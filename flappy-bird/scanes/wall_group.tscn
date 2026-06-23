@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://omdh3n3teew3" path="res://scanes/wall.tscn" id="1_plfkk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plfkk"]
-size = Vector2(89, 161)
+size = Vector2(28, 161)
 
 [node name="WallGroup" type="Node2D" unique_id=2104144509]
 z_index = -1
@@ -23,6 +23,7 @@ position = Vector2(0, 298)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxPoint" unique_id=1425586173]
+position = Vector2(54, 0)
 shape = SubResource("RectangleShape2D_plfkk")
 
 [connection signal="body_entered" from="HitboxPoint" to="." method="_on_hitbox_body_entered"]

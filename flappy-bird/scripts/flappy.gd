@@ -9,12 +9,15 @@ var GRAVITY = 1000.0
 const JUMP_FORCE = -350.0
 @onready var timer: Timer = $Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var area_2d: Area2D = $Area2D
 
 var tweenJump : Tween
 
 func _ready() -> void:
 	animated_sprite_2d.play()
 	GRAVITY = 1000.0
+	area_2d.monitoring = true
+	area_2d.monitorable = true
 
 
 func _physics_process(delta):
@@ -54,5 +57,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	print(area.name)
 	if area.name == "HitboxPoint":
 		set_point.emit()
-	else: 
+	else:
+		area_2d.monitoring = false
+		area_2d.monitorable = false
 		game_over.emit()
