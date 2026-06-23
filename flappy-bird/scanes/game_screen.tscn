@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://hd2ej2svrexn" path="res://scanes/flappy.tscn" id="1_wvl5c"]
 [ext_resource type="PackedScene" uid="uid://omdh3n3teew3" path="res://scanes/wall.tscn" id="3_p1mjg"]
 [ext_resource type="PackedScene" uid="uid://b2hmbmmfyq4tl" path="res://scanes/game_ui.tscn" id="4_qjjyk"]
-[ext_resource type="Texture2D" uid="uid://86ks200swpvi" path="res://background/Background2.png" id="5_yxa3v"]
+[ext_resource type="PackedScene" uid="uid://b8qp4kpa3sqwy" path="res://scanes/background.tscn" id="5_yxa3v"]
 
 [node name="GameScreen" type="Node2D" unique_id=1288761079 node_paths=PackedStringArray("parallax2D")]
 script = ExtResource("1_7v28y")
-parallax2D = NodePath("Parallax2D")
+parallax2D = NodePath("Background")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=492622330]
 
@@ -41,16 +41,7 @@ isVisible = false
 
 [node name="GameUI" parent="." unique_id=1733494011 instance=ExtResource("4_qjjyk")]
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=306133902]
-z_index = -5
-repeat_size = Vector2(1152, 0)
-repeat_times = 2
-follow_viewport = false
-ignore_camera_scroll = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2081386277]
-scale = Vector2(4.742188, 2.9609375)
-texture = ExtResource("5_yxa3v")
+[node name="Background" parent="." unique_id=1576817080 instance=ExtResource("5_yxa3v")]
 
 [connection signal="update_score" from="." to="GameUI" method="_on_game_screen_update_score"]
 [connection signal="timeout" from="SpawnPipe" to="." method="_on_timer_timeout"]

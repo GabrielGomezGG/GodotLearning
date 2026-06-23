@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b8qp4kpa3sqwy"]
+
+[ext_resource type="Texture2D" uid="uid://86ks200swpvi" path="res://background/Background2.png" id="1_aq6gr"]
+[ext_resource type="Script" uid="uid://c02xqybtlfs6t" path="res://scripts/background.gd" id="1_krd0n"]
+[ext_resource type="Texture2D" uid="uid://bnlv6kl54o018" path="res://background/Background3.png" id="3_whmkj"]
+[ext_resource type="Texture2D" uid="uid://7q4urmbpfu8d" path="res://background/Background4.png" id="4_4k0xt"]
+[ext_resource type="Texture2D" uid="uid://d10whurx21tb4" path="res://background/Background5.png" id="5_xamaw"]
+
+[node name="Background" type="Parallax2D" unique_id=1576817080]
+z_index = -5
+repeat_size = Vector2(1214, 0)
+follow_viewport = false
+ignore_camera_scroll = true
+script = ExtResource("1_krd0n")
+backgrounds = Array[Texture2D]([ExtResource("1_aq6gr"), ExtResource("3_whmkj"), ExtResource("4_4k0xt"), ExtResource("5_xamaw")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1731761856]
+scale = Vector2(4.742188, 2.9609375)
+texture = ExtResource("1_aq6gr")
+
+[node name="Sprite2DNext" type="Sprite2D" parent="." unique_id=93235772]
+scale = Vector2(4.742188, 2.9609375)
+texture = ExtResource("3_whmkj")
+
+[node name="Timer" type="Timer" parent="." unique_id=1474215187]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
