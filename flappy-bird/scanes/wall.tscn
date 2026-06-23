@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://omdh3n3teew3"]
 
-[ext_resource type="Texture2D" uid="uid://bh1islyxvqogg" path="res://tiles/PipeStyle4.png" id="1_oom2p"]
+[ext_resource type="Script" uid="uid://b784wvbldjv0c" path="res://scripts/wall.gd" id="1_8qjy4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oom2p"]
+load_path = "res://.godot/imported/PipeStyle4.png-a796a1c58698eff2878b76bca8c86cb0.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qjy4"]
 size = Vector2(32, 48)
@@ -8,11 +11,14 @@ size = Vector2(32, 48)
 [node name="Wall" type="Area2D" unique_id=1860843624]
 scale = Vector2(1, 2)
 collision_layer = 2
+script = ExtResource("1_8qjy4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1395725381]
-texture = ExtResource("1_oom2p")
+texture = SubResource("CompressedTexture2D_oom2p")
 region_enabled = true
 region_rect = Rect2(0, -0.02161944, 32.003376, 47.94962)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85944446]
 shape = SubResource("RectangleShape2D_8qjy4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -36,10 +36,11 @@ animations = [{
 }]
 
 [node name="Flappy" type="CharacterBody2D" unique_id=1171342555]
-collision_mask = 10
+collision_mask = 14
 script = ExtResource("1_hnbai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=228858831]
+visible = false
 position = Vector2(0, -0.5)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_hnbai")
@@ -48,11 +49,20 @@ shape = SubResource("RectangleShape2D_hnbai")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_26sjp")
 animation = &"jump"
-frame_progress = 0.18219544
+frame_progress = 0.9440178
 
 [node name="Timer" type="Timer" parent="." unique_id=866043106]
 process_callback = 0
 wait_time = 0.3
 autostart = true
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1230165504]
+collision_mask = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=873526511]
+position = Vector2(0, -0.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_hnbai")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

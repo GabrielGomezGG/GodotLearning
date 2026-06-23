@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://da6nkfouxqhga" path="res://scripts/game_screen.gd" id="1_7v28y"]
 [ext_resource type="PackedScene" uid="uid://hd2ej2svrexn" path="res://scanes/flappy.tscn" id="1_wvl5c"]
+[ext_resource type="PackedScene" uid="uid://omdh3n3teew3" path="res://scanes/wall.tscn" id="3_p1mjg"]
+[ext_resource type="PackedScene" uid="uid://b2hmbmmfyq4tl" path="res://scanes/game_ui.tscn" id="4_qjjyk"]
 
 [node name="GameScreen" type="Node2D" unique_id=1288761079]
 script = ExtResource("1_7v28y")
@@ -14,7 +16,7 @@ autostart = true
 
 [node name="Flappy" parent="." unique_id=884521568 instance=ExtResource("1_wvl5c")]
 z_index = 10
-position = Vector2(0, -287)
+position = Vector2(-329, -287)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2003066686]
 position = Vector2(-698, -283)
@@ -23,4 +25,21 @@ target_position = Vector2(4, 0)
 collision_mask = 2
 collide_with_areas = true
 
+[node name="DeathZoneTop" parent="." unique_id=1860843624 instance=ExtResource("3_p1mjg")]
+position = Vector2(0, -332)
+rotation = 1.5707964
+scale = Vector2(1, 30)
+isVisible = false
+
+[node name="DeathZoneBottom" parent="." unique_id=1518406909 instance=ExtResource("3_p1mjg")]
+position = Vector2(-7.247536e-13, 332)
+rotation = 1.5707964
+scale = Vector2(1, 30)
+isVisible = false
+
+[node name="GameUI" parent="." unique_id=1733494011 instance=ExtResource("4_qjjyk")]
+
+[connection signal="update_score" from="." to="GameUI" method="_on_game_screen_update_score"]
 [connection signal="timeout" from="SpawnPipe" to="." method="_on_timer_timeout"]
+[connection signal="game_over" from="Flappy" to="." method="_on_flappy_game_over"]
+[connection signal="reset_game" from="GameUI" to="." method="_on_game_ui_reset_game"]

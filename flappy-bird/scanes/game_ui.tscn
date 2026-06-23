@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b2hmbmmfyq4tl"]
+
+[ext_resource type="Script" uid="uid://drxquuj8b5mbf" path="res://scripts/game_ui.gd" id="1_jfy8l"]
+
+[node name="GameUI" type="Control" unique_id=1733494011]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jfy8l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1683866898]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=718330797]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 8.0
+offset_right = 20.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0.5019608, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1312847308]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -160.0
+offset_right = 60.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Reset"
