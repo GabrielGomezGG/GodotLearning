@@ -6,7 +6,7 @@ signal game_over
 signal set_point
 
 var GRAVITY = 1000.0
-const JUMP_FORCE = -350.0
+const JUMP_FORCE = -400.0
 @onready var timer: Timer = $Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
@@ -58,6 +58,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "HitboxPoint":
 		set_point.emit()
 	else:
-		area_2d.monitoring = false
-		area_2d.monitorable = false
+		area_2d.queue_free()
 		game_over.emit()
